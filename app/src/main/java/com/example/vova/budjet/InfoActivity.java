@@ -13,10 +13,5 @@ public class InfoActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
         return new InfoFragment();
     }
-
-
-
-
-
 }
 
