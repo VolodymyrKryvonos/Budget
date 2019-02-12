@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,74 +9,49 @@
     tools:context=".InfoActivity"
     tools:showIn="@layout/activity_info">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="27dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@color/battons"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/actions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside">
+        app:layout_constraintBottom_toTopOf="@+id/actions">
 
         <Button
             android:id="@+id/income"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="1"
             android:background="@color/battons"
             android:text="@string/income"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/costs"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
             android:background="@color/battons"
             android:text="@string/costs"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/balance"
-            app:layout_constraintStart_toEndOf="@+id/income" />
+            android:textAllCaps="false"
+        />
 
         <Button
             android:id="@+id/balance"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:layout_weight="1"
+            android:textAllCaps="false"
             android:background="@color/battons"
-            android:text="@string/balance"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="@string/balance" />
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/actions"
-        android:layout_width="346dp"
-        android:layout_height="384dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="73dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.727"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:itemCount="34" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="120dp"
+        tools:itemCount="8" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

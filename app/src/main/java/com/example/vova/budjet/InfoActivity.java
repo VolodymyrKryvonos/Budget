@@ -12,6 +12,6 @@ public class InfoActivity extends SingleFragmentActivity {
     @Override
     protected Fragment createFragment() {
         return new InfoFragment();
-    }
+        }
 }
 
