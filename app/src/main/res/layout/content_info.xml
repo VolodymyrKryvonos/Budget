@@ -10,6 +10,9 @@
     tools:showIn="@layout/activity_info">
 
     <LinearLayout
+        android:backgroundTint="@color/black"
+        android:showDividers="middle"
+        android:divider="@drawable/divider"
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
@@ -21,15 +24,18 @@
 
         <Button
             android:id="@+id/income"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="70dp"
             android:background="@color/battons"
             android:text="@string/income"
             android:textAllCaps="false"/>
 
+
+
         <Button
+
             android:id="@+id/costs"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="70dp"
             android:background="@color/battons"
             android:text="@string/costs"
@@ -37,8 +43,9 @@
         />
 
         <Button
+
             android:id="@+id/balance"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="70dp"
             android:textAllCaps="false"
             android:background="@color/battons"
