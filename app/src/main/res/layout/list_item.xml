@@ -28,14 +28,14 @@
     <TextView
         android:id="@+id/money"
         android:layout_marginTop="35dp"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="320dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="214124"
         android:textSize="18sp" />
 
     <TextView
-        android:layout_marginLeft="320dp"
+        android:layout_marginLeft="337dp"
         android:layout_marginTop="12dp"
         android:id="@+id/action"
         android:layout_width="wrap_content"
