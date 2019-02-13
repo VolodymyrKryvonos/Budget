@@ -121,7 +121,7 @@ public class FragmentAdd extends Fragment {
                 }
                 else intent.putExtra("used",true);
                 intent.putExtra("Money_change",monneyChange.getText().toString());
-                intent.putExtra("Shor_description",shortDiscribe.getText().toString());
+                intent.putExtra("Short_description",shortDiscribe.getText().toString());
                 intent.putExtra("Choise",choise.getSelectedItem().toString());
                 if (isNeedDisc!=false){
                     intent.putExtra("Describe",discribe.getText().toString());

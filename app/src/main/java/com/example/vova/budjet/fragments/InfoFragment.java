@@ -21,11 +21,13 @@ import java.util.List;
 
 public class InfoFragment extends android.support.v4.app.Fragment {
 
+    private List<Info> mInfos;
     Button costs, income, balance;
     Info mInfo = new Info();
     double costsD = 0d, balanceD = 0d, incomeD = 0d;
     private RecyclerView infoList;
     private InfoAdapter mAdapter;
+    InfoLab infoLab = InfoLab.get(getActivity());
 
     private class InfoHolder extends RecyclerView.ViewHolder {
         private TextView mMoneyChange;
@@ -42,7 +44,7 @@ public class InfoFragment extends android.support.v4.app.Fragment {
 
 
             mMoneyChange.setText(mInfo.getMoneyChange());
-            mDescriptionTextView.setText(mInfo.getDescribe());
+            mDescriptionTextView.setText(mInfo.getShortDescribe());
             mActionTextView.setText(mInfo.getChoise());
             mDateTextView.setText(mInfo.getDate().toString());
 
@@ -51,7 +53,7 @@ public class InfoFragment extends android.support.v4.app.Fragment {
 
 
     private class InfoAdapter extends RecyclerView.Adapter<InfoHolder> {
-        private List<Info> mInfos;
+
 
         public InfoAdapter(List<Info> infos) {
             mInfos = infos;
@@ -107,12 +109,13 @@ public class InfoFragment extends android.support.v4.app.Fragment {
         if ((data == null)||(!data.getExtras().getBoolean("used"))) return;
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
         if (data.getStringExtra("Choise").equals("Costs")) {
+            infoLab.mInfos.add(new Info(data.getStringExtra("Money_change"),data.getStringExtra("Short_description"),data.getStringExtra("Describe"),data.getStringExtra("Choise")));
             costsD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(data.getStringExtra("Money_change")))));
             costs.setText("Costs: " + decimalFormat.format(costsD));
             balanceD -= costsD;
             balance.setText("Balance: " + decimalFormat.format(balanceD));
         } else {
-            incomeD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(data.getStringExtra("Money_change")))));
+            infoLab.mInfos.add(new Info(data.getStringExtra("Money_change"),data.getStringExtra("Short_description"),data.getStringExtra("Describe"),data.getStringExtra("Choise")));            incomeD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(data.getStringExtra("Money_change")))));
             income.setText("Income: " + decimalFormat.format(incomeD));
             balanceD += incomeD;
             balance.setText("Balance: " + decimalFormat.format(balanceD));
@@ -121,7 +124,7 @@ public class InfoFragment extends android.support.v4.app.Fragment {
 
 
     private void updateUI() {
-        InfoLab infoLab = InfoLab.get(getActivity());
+
         List<Info> infos = infoLab.getInfos();
         mAdapter = new InfoAdapter(infos);
         infoList.setAdapter(mAdapter);

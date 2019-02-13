@@ -8,15 +8,16 @@ import java.util.UUID;
 
 public class InfoLab {
 
-    private List<Info> mInfos;
+    public List<Info> mInfos;
 
     private static InfoLab sInfoLab;
 
     private InfoLab(Context context) {
 
-        mInfos = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
+        mInfos = new ArrayList<Info>();
+        for (int i = 0; i < 5; i++) {
             Info info = new Info();
+            info.setChoise("Costs");
             info.setShortDescribe("№ " + i);
             info.setMoneyChange(""+i);
             if (i%3==0){

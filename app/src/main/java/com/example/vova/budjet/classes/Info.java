@@ -5,12 +5,18 @@ import java.util.UUID;
 
 public class Info {
 
-    static private Date mDate;
-    static private String moneyChange = null, shortDescribe, describe, choise;
-    static private UUID id;
-
+    private Date mDate;
+    private String moneyChange = null, shortDescribe, describe, choise;
+    private UUID id;
 
     public Info() {
+    }
+
+    public Info(String moneyChange, String shortDescribe, String describe, String choise) {
+        this.moneyChange = moneyChange;
+        this.shortDescribe = shortDescribe;
+        this.describe = describe;
+        this.choise = choise;
         id = UUID.randomUUID();
         mDate = new Date();
     }
