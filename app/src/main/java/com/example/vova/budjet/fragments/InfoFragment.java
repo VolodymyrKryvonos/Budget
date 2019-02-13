@@ -98,6 +98,7 @@ public class InfoFragment extends android.support.v4.app.Fragment {
         });
 
 
+        updateUI();
         return view;
     }
 
