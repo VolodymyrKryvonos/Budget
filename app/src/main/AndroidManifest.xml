@@ -20,7 +20,8 @@
             android:name=".InfoActivity"
             android:label="@string/title_activity_info"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddAction"></activity>
+        <activity android:name=".AddAction" />
+        <activity android:name=".Datails"></activity>
     </application>
 
 </manifest>

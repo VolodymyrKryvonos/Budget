@@ -25,7 +25,7 @@
         <Button
             android:id="@+id/income"
             android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:background="@color/battons"
             android:text="@string/income"
             android:textAllCaps="false"/>
@@ -36,7 +36,7 @@
 
             android:id="@+id/costs"
             android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:background="@color/battons"
             android:text="@string/costs"
             android:textAllCaps="false"
@@ -46,7 +46,7 @@
 
             android:id="@+id/balance"
             android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:textAllCaps="false"
             android:background="@color/battons"
             android:text="@string/balance" />

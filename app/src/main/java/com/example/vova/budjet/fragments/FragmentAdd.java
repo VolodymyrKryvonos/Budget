@@ -3,6 +3,7 @@ package com.example.vova.budjet.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +19,8 @@ import android.widget.Spinner;
 import com.example.vova.budjet.R;
 import com.example.vova.budjet.classes.Info;
 
+import java.io.Serializable;
+import java.util.Date;
 
 
 public class FragmentAdd extends Fragment {
@@ -51,6 +54,8 @@ public class FragmentAdd extends Fragment {
         discribe = (EditText) view.findViewById(R.id.more_information);
         add = (Button) view.findViewById(R.id.Add);
         isNeedDiscribe = (CheckBox) view.findViewById(R.id.is_need_describe);
+
+        editDate.setText(new Date().toString());
 
         monneyChange.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,7 +114,7 @@ public class FragmentAdd extends Fragment {
             }
         });
 
-        editDate.setText(mInfo.getDate().toString());
+
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -120,12 +125,11 @@ public class FragmentAdd extends Fragment {
                   intent.putExtra("used",false);
                 }
                 else intent.putExtra("used",true);
-                intent.putExtra("Money_change",monneyChange.getText().toString());
-                intent.putExtra("Short_description",shortDiscribe.getText().toString());
-                intent.putExtra("Choise",choise.getSelectedItem().toString());
-                if (isNeedDisc!=false){
-                    intent.putExtra("Describe",discribe.getText().toString());
-                }
+                String ch = choise.getSelectedItem().toString();
+                String mCh = monneyChange.getText().toString();
+                String shD = shortDiscribe.getText().toString();
+                Info info = new Info(mCh,shD,ch);
+                intent.putExtra("NEW_ITEM", info);
                 getActivity().setResult(Activity.RESULT_OK,intent);
                 getActivity().finish();
             }

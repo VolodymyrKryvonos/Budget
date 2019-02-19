@@ -14,68 +14,22 @@ import android.widget.TextView;
 import com.example.vova.budjet.AddAction;
 import com.example.vova.budjet.R;
 import com.example.vova.budjet.classes.Info;
-import com.example.vova.budjet.classes.InfoLab;
+import com.example.vova.budjet.classes.InfoAdapter;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class InfoFragment extends android.support.v4.app.Fragment {
 
-    private List<Info> mInfos;
+
     Button costs, income, balance;
     Info mInfo = new Info();
     double costsD = 0d, balanceD = 0d, incomeD = 0d;
     private RecyclerView infoList;
-    private InfoAdapter mAdapter;
-    InfoLab infoLab = InfoLab.get(getActivity());
-
-    private class InfoHolder extends RecyclerView.ViewHolder {
-        private TextView mMoneyChange;
-        private TextView mDateTextView;
-        private TextView mDescriptionTextView;
-        private TextView mActionTextView;
-
-        public InfoHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.list_item, parent, false));
-            mMoneyChange = (TextView) itemView.findViewById(R.id.money);
-            mDateTextView = (TextView) itemView.findViewById(R.id.date);
-            mDescriptionTextView = (TextView) itemView.findViewById(R.id.info);
-            mActionTextView = (TextView) itemView.findViewById(R.id.action);
-
-
-            mMoneyChange.setText(mInfo.getMoneyChange());
-            mDescriptionTextView.setText(mInfo.getShortDescribe());
-            mActionTextView.setText(mInfo.getChoise());
-            mDateTextView.setText(mInfo.getDate().toString());
-
-        }
-    }
-
-
-    private class InfoAdapter extends RecyclerView.Adapter<InfoHolder> {
-
-
-        public InfoAdapter(List<Info> infos) {
-            mInfos = infos;
-        }
-
-
-        @Override
-        public InfoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new InfoHolder(layoutInflater, parent);
-        }
-
-        @Override
-        public void onBindViewHolder(InfoHolder holder, int position) {
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return mInfos.size();
-        }
-    }
+    private RecyclerView.Adapter mAdapter;
+    private ArrayList<Info> mInfos = new ArrayList<>();
 
 
     @Override
@@ -88,46 +42,53 @@ public class InfoFragment extends android.support.v4.app.Fragment {
 
 
         infoList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter = new InfoAdapter(mInfos);
+        infoList.setAdapter(mAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+
+        FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AddAction.class);
-                startActivityForResult(intent, 2);
+                startActivityForResult(intent, 1);
 
             }
         });
 
-
-        updateUI();
         return view;
     }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if ((data == null)||(!data.getExtras().getBoolean("used"))) return;
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-        if (data.getStringExtra("Choise").equals("Costs")) {
-            infoLab.mInfos.add(new Info(data.getStringExtra("Money_change"),data.getStringExtra("Short_description"),data.getStringExtra("Describe"),data.getStringExtra("Choise")));
-            costsD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(data.getStringExtra("Money_change")))));
+        Info info = (Info) data.getExtras().getSerializable("NEW_ITEM");
+        if (info.getChoise().equals("Costs")) {
+
+            costsD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(info.getMoneyChange()))));
             costs.setText("Costs: " + decimalFormat.format(costsD));
             balanceD -= costsD;
             balance.setText("Balance: " + decimalFormat.format(balanceD));
+            addNewItem(info);
         } else {
-            infoLab.mInfos.add(new Info(data.getStringExtra("Money_change"),data.getStringExtra("Short_description"),data.getStringExtra("Describe"),data.getStringExtra("Choise")));            incomeD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(data.getStringExtra("Money_change")))));
+            incomeD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(info.getMoneyChange()))));
             income.setText("Income: " + decimalFormat.format(incomeD));
             balanceD += incomeD;
             balance.setText("Balance: " + decimalFormat.format(balanceD));
+            addNewItem(info);
         }
     }
 
-
-    private void updateUI() {
-
-        List<Info> infos = infoLab.getInfos();
-        mAdapter = new InfoAdapter(infos);
-        infoList.setAdapter(mAdapter);
+    private void addNewItem(Info info){
+        if (info!=null){
+            info.setDate(new Date());
+            mInfos.add(info);
+            mAdapter.notifyDataSetChanged();
+        }
     }
+
 
 }

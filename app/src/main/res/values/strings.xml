@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Budjet</string>
+    <string name="app_name">Budget</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="income">Income</string>
     <string name="costs">Costs</string>

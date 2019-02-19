@@ -1,9 +1,13 @@
 package com.example.vova.budjet.classes;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class Info {
+public class Info implements Serializable{
 
     private Date mDate;
     private String moneyChange = null, shortDescribe, describe, choise;
@@ -12,10 +16,10 @@ public class Info {
     public Info() {
     }
 
-    public Info(String moneyChange, String shortDescribe, String describe, String choise) {
+    public Info(String moneyChange, String shortDescribe,String choise) {
         this.moneyChange = moneyChange;
         this.shortDescribe = shortDescribe;
-        this.describe = describe;
+//        this.describe = describe;
         this.choise = choise;
         id = UUID.randomUUID();
         mDate = new Date();
@@ -64,6 +68,5 @@ public class Info {
     public void setDescribe(String describe) {
         this.describe = describe;
     }
-
 
 }

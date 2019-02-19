@@ -26,10 +26,10 @@
     <TextView
         android:id="@+id/money"
         android:layout_marginTop="35dp"
-        android:layout_marginLeft="320dp"
+        android:layout_marginLeft="313dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="214124"
+        android:text=""
         android:textSize="18sp" />
 
     <TextView
