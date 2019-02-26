@@ -1,9 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Datails">
 
-</android.support.constraint.ConstraintLayout>
+   <com.github.mikephil.charting.charts.PieChart
+       android:layout_marginLeft="10dp"
+       android:layout_marginTop="10dp"
+       android:id="@+id/pie_chart"
+       android:layout_width="200dp"
+       android:layout_height="200dp"></com.github.mikephil.charting.charts.PieChart>
+
+   <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="215dp"
+    android:layout_marginTop="15dp"
+    android:text="Category" />
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="300dp"
+       android:layout_marginTop="15dp"
+       android:id="@+id/category"/>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="215dp"
+       android:layout_marginTop="45dp"
+
+       android:text="Money" />
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="45dp"
+
+       android:layout_marginLeft="300dp"
+       android:id="@+id/mon"
+       />
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="215dp"
+       android:layout_marginTop="75dp"
+
+       android:text="Date" />
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="75dp"
+
+       android:layout_marginLeft="300dp"
+       android:id="@+id/dt"
+       />
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="215dp"
+       android:layout_marginTop="105dp"
+       android:text="Description" />
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="105dp"
+       android:layout_marginRight="50dp"
+       android:layout_marginLeft="300dp"
+       android:id="@+id/des"
+       />
+
+
+</RelativeLayout>

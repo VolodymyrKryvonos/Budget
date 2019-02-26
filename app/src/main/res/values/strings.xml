@@ -2,11 +2,11 @@
     <string name="app_name">Budget</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="income">Income</string>
-    <string name="costs">Costs</string>
+    <string name="costs">Expenses</string>
     <string name="balance">Balance</string>
     <string-array name="action">
         <item>Income</item>
-        <item>Costs</item>
+        <item>Expenses</item>
     </string-array>
 
 </resources>

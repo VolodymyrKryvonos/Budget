@@ -50,8 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="535dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginVertical="10dp"
         android:textAllCaps="false"
    />
 

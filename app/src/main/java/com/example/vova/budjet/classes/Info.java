@@ -9,23 +9,23 @@ import java.util.UUID;
 
 public class Info implements Serializable{
 
-    private Date mDate;
+    private String mDate;
     private String moneyChange = null, shortDescribe, describe, choise;
     private UUID id;
 
     public Info() {
     }
 
-    public Info(String moneyChange, String shortDescribe,String choise) {
+    public Info(String moneyChange, String shortDescribe,String choise,String date) {
         this.moneyChange = moneyChange;
         this.shortDescribe = shortDescribe;
-//        this.describe = describe;
+
         this.choise = choise;
         id = UUID.randomUUID();
-        mDate = new Date();
+        mDate = date;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return mDate;
     }
 
@@ -54,7 +54,7 @@ public class Info implements Serializable{
     }
 
     public void setDate(Date date) {
-        mDate = date;
+        mDate = date.toString();
     }
 
     public void setMoneyChange(String moneyChange) {

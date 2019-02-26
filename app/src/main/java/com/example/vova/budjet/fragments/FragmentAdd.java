@@ -20,6 +20,7 @@ import com.example.vova.budjet.R;
 import com.example.vova.budjet.classes.Info;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Date;
 
 
@@ -55,7 +56,9 @@ public class FragmentAdd extends Fragment {
         add = (Button) view.findViewById(R.id.Add);
         isNeedDiscribe = (CheckBox) view.findViewById(R.id.is_need_describe);
 
-        editDate.setText(new Date().toString());
+        android.text.format.DateFormat df = new android.text.format.DateFormat();
+
+        editDate.setText(df.format("yyyy.MM.dd hh:mm:ss a", new java.util.Date()));
 
         monneyChange.addTextChangedListener(new TextWatcher() {
             @Override
@@ -125,10 +128,11 @@ public class FragmentAdd extends Fragment {
                   intent.putExtra("used",false);
                 }
                 else intent.putExtra("used",true);
+                String dt = editDate.getText().toString();
                 String ch = choise.getSelectedItem().toString();
                 String mCh = monneyChange.getText().toString();
                 String shD = shortDiscribe.getText().toString();
-                Info info = new Info(mCh,shD,ch);
+                Info info = new Info(mCh,shD,ch,dt);
                 intent.putExtra("NEW_ITEM", info);
                 getActivity().setResult(Activity.RESULT_OK,intent);
                 getActivity().finish();

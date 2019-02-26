@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+
 
 import com.example.vova.budjet.AddAction;
 import com.example.vova.budjet.R;
@@ -19,7 +19,6 @@ import com.example.vova.budjet.classes.InfoAdapter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class InfoFragment extends android.support.v4.app.Fragment {
 
@@ -63,20 +62,21 @@ public class InfoFragment extends android.support.v4.app.Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if ((data == null)||(!data.getExtras().getBoolean("used"))) return;
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        if ((data == null)||(!data.getExtras().getBoolean("used"))) return;
         Info info = (Info) data.getExtras().getSerializable("NEW_ITEM");
+        double change = Math.abs(Double.parseDouble(info.getMoneyChange()));
         if (info.getChoise().equals("Costs")) {
 
-            costsD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(info.getMoneyChange()))));
+            costsD += change;
             costs.setText("Costs: " + decimalFormat.format(costsD));
-            balanceD -= costsD;
+            balanceD -= change;
             balance.setText("Balance: " + decimalFormat.format(balanceD));
             addNewItem(info);
         } else {
-            incomeD += Math.abs(Double.valueOf(decimalFormat.format(Double.valueOf(info.getMoneyChange()))));
+            incomeD += change;
             income.setText("Income: " + decimalFormat.format(incomeD));
-            balanceD += incomeD;
+            balanceD += change;
             balance.setText("Balance: " + decimalFormat.format(balanceD));
             addNewItem(info);
         }
