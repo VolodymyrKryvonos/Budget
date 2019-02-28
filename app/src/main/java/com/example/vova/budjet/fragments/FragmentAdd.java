@@ -58,7 +58,7 @@ public class FragmentAdd extends Fragment {
 
         android.text.format.DateFormat df = new android.text.format.DateFormat();
 
-        editDate.setText(df.format("yyyy.MM.dd hh:mm:ss a", new java.util.Date()));
+        editDate.setText(df.format("yy.MM.dd hh:mm", new java.util.Date()));
 
         monneyChange.addTextChangedListener(new TextWatcher() {
             @Override

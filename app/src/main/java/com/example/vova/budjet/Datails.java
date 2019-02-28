@@ -46,7 +46,7 @@ public class Datails extends AppCompatActivity {
 
 
         mPieChart = findViewById(R.id.pie_chart);
-        mPieChart.setHoleRadius(40);
+        mPieChart.setHoleRadius(60);
         mPieChart.setTransparentCircleAlpha(2);
         addDataSet();
 

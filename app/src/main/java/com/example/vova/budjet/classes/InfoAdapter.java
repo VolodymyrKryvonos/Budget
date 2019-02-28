@@ -44,7 +44,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolderInfo
         holder.choise.setText(info.getChoise());
         holder.inform.setText(info.getShortDescribe());
         holder.monneyChange.setText(""+decimalFormat.format(Double.parseDouble(info.getMoneyChange())));
-        holder.date.setText(info.getDate().toString());
+        holder.date.setText(info.getDate());
 
     }
 
